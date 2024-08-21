@@ -2,6 +2,8 @@ const express = require("express");
 const router = require('./rotas')
 const bebidaController= require("./modules/bebida");
 const comidaController= require("./modules/comida");
+const funcionarioController= require("./modules/funcionario");
+const clienteController= require("./modules/cliente");
 
 const app = express();
 app.use(express.json());
@@ -17,10 +19,10 @@ app.post("/bebida", (req, res) =>{
   });
   
   app.get("/bebida", (req, res) => {
-    res.status(200).send(`
-    "nome":
-    "preco":
-    "tipo": (quente ou gelada)`)
+    // res.status(200).send(`
+    // "nome":
+    // "preco":
+    // "tipo": (quente ou gelada)`)
     const bebidas = bebidaController.index();
     res.json(bebidas);
   });
@@ -49,10 +51,10 @@ app.post("/bebida", (req, res) =>{
   });
   
   app.get("/comida", (req, res) => {
-    res.status(200).send(`
-    "nome":
-    "preco":
-    "tipo": (doce ou salgada)`)
+    // res.send(`
+    // "nome":
+    // "preco":
+    // "tipo": (doce ou salgada)`)
     const comidas = comidaController.index();
     res.json(comidas);
   });
@@ -82,8 +84,8 @@ app.post("/bebida", (req, res) =>{
   });
   
   app.get("/cliente", (req, res) => {
-    res.status(200).send(`
-    "nome":`)
+    // res.status(200).send(`
+    // "nome":`)
     const clientes = clienteController.index();
     res.json(clientes);
   });
@@ -113,8 +115,8 @@ app.post("/bebida", (req, res) =>{
   });
   
   app.get("/funcionario", (req, res) => {
-    res.status(200).send(`
-    "nome":`)
+    // res.status(200).send(`
+    // "nome":`)
     const funcionarios = funcionarioController.index();
     res.json(funcionarios);
   });
