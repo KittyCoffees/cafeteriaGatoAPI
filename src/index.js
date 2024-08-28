@@ -4,6 +4,9 @@ const bebidaController= require("./modules/bebida");
 const comidaController= require("./modules/comida");
 const funcionarioController= require("./modules/funcionario");
 const clienteController= require("./modules/cliente");
+const gatoController= require("./modules/gato");
+const gatilController= require("./modules/gatil");
+const pedidoController= require("./modules/pedido");
 
 const app = express();
 app.use(express.json());
@@ -136,5 +139,95 @@ app.post("/bebida", (req, res) =>{
       funcionarioController.destroy(req.params.id)
       res.json()
   })
+
+// gatinhos
+
+app.post("/gato", (req, res) => {
+  const gato = req.body;
+  const code = gatoController.create(gato);
+  res.status(code).json();
+});
+
+app.get("/gato", (req, res) => {
+  const gatos = gatoController.index();
+  res.json(gatos);
+});
+
+app.get("/gato/:id", (req, res) => {
+  const gato = gatoController.show(req.params.id);
+  res.json(gato);
+});
+app.put("/gato/:id", (req, res) => {
+  const gato = req.body;
+  const code = gatoController.update(req.params.id, gato);
+  res.status(code).json();
+});
+
+app.delete("/gato/:id", (req, res) => {
+  gatoController.destroy(req.params.id);
+  res.json();
+});
+
+
+app.delete("/funcionario/:id", (req, res) => {
+   funcionarioController.destroy(req.params.id)
+  res.json()
+})
+
+// gatil
+
+app.post("/gatil", (req, res) => {
+  const gatil = req.body;
+  const code = gatilController.create(gatil);
+  res.status(code).json();
+});
+
+app.get("/gatil", (req, res) => {
+  const gatil = gatilController.index();
+  res.json(gatil);
+});
+
+app.get("/gatil/:id", (req, res) => {
+  const gatil = gatilController.show(req.params.id);
+  res.json(gatil);
+});
+app.put("/gatil/:id", (req, res) => {
+  const gato = req.body;
+  const code = gatoController.update(req.params.id, gato);
+  res.status(code).json();
+});
+
+app.delete("/gatil/:id", (req, res) => {
+  gatilController.destroy(req.params.id);
+  res.json();
+});
+
+// pedidos
+
+app.post("/pedido", (req, res) => {
+  const pedido = req.body;
+  const code = pedidoController.create(pedido);
+  res.status(code).json();
+});
+
+app.get("/pedido", (req, res) => {
+  const pedidos = pedidoController.index();
+  res.json(pedidos);
+});
+
+app.get("/pedido/:id", (req, res) => {
+  const pedido = pedidoController.show(req.params.id);
+  res.json(pedido);
+});
+app.put("/pedido/:id", (req, res) => {
+  const pedido = req.body;
+  const code = pedidoController.update(req.params.id, gato);
+  res.status(code).json();
+});
+
+app.delete("/pedido/:id", (req, res) => {
+  pedidoController.destroy(req.params.id);
+  res.json();
+});
 
 app.listen(4000, ()=> console.log("server rodando.."));    
